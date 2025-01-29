@@ -1,0 +1,28 @@
+### CREATE DATABASE
+
+POST http://localhost:3000/api/databasecreate-database
+Content-Type: application/json
+
+{
+    "dbname": "13a_tarhelyszolgaltato"
+}
+
+### CREATE USER  password: JCj8jGmrirPT
+
+POST http://localhost:3000/create-user
+Content-Type: application/json
+
+{
+    "username": "13a_tarrmaci"
+}
+
+### GRANT PRIVILEGES to USER on DATABASE
+
+POST http://localhost:3000/grant-privileges
+Content-Type: application/json
+
+{
+    "username": "13a_tarhelyszolgaltato",
+    "dbname": "13a_tarrmaci",
+    "privileges": "SELECT, INSERT, UPDATE, DELETE"
+}
