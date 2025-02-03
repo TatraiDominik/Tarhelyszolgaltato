@@ -2,8 +2,8 @@ POST http://localhost:3000/api/user/register
 Content-Type: application/json
 
 {
-    "name": "Tarrvágó Balázs",
-    "email": "tarrvago@gmail.com",
-    "password": "Tarrmaci01",
-    "domain": "example.com"
+    "name": "Kanádi Csevin",
+    "email": "csanikevin@gmail.com",
+    "password": "Tarrmaci01"
+    
 }
