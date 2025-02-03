@@ -6,9 +6,9 @@ Content-Type: application/json
     "dbname": "13a_tarhelyszolgaltato"
 }
 
-### CREATE USER  password: JCj8jGmrirPT
+### CREATE USER  password: "ndQn3zh0hgp4"
 
-POST http://localhost:3000/create-user
+POST http://localhost:3000/api/database/create-user
 Content-Type: application/json
 
 {
@@ -17,11 +17,11 @@ Content-Type: application/json
 
 ### GRANT PRIVILEGES to USER on DATABASE
 
-POST http://localhost:3000/grant-privileges
+POST http://localhost:3000/api/database/grant-privileges
 Content-Type: application/json
 
 {
-    "username": "13a_tarhelyszolgaltato",
-    "dbname": "13a_tarrmaci",
-    "privileges": "SELECT, INSERT, UPDATE, DELETE"
+  "username": "13a_tarrmaci",
+  "dbname": "13a_tarhelyszolgaltato",
+  "privileges": "SELECT, INSERT, UPDATE, DELETE"
 }
