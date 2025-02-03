@@ -1,15 +1,20 @@
 const { createDatabase, createUser, grantPrivileges } = require('../services/database.service');
 
 exports.createDatabase = async (req, res) => {
+  console.log("Request headers:", req.headers); // Log request headers
+  console.log("Request body:", req.body);  // Log request body
+
   const { dbname } = req.body;
-  if (!dbname) {
-    return res.status(400).json({ message: 'Database name is required!' });
+
+  if (!dbname || typeof dbname !== 'string' || dbname.trim() === '') {
+    return res.status(400).json({ message: 'Valid database name is required!' });
   }
 
   try {
     await createDatabase(dbname);
     res.status(200).json({ message: 'Database created successfully!' });
   } catch (err) {
+    console.error("Error creating database:", err);
     res.status(500).json({ message: err.message });
   }
 };

@@ -1,6 +1,5 @@
 ### CREATE DATABASE
-
-POST http://localhost:3000/api/databasecreate-database
+POST http://localhost:3000/api/database/create-database
 Content-Type: application/json
 
 {
