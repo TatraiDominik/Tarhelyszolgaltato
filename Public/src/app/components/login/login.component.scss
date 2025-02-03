@@ -1,0 +1,61 @@
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.usernameCard{
+    margin-bottom: 20px;
+}
+
+.RegCard{
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+
+h1 {
+    color: #9a9b9f;
+    margin-bottom: 5rem;
+}
+
+input {
+    width: 200px;
+}
+
+.passwdInput{
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}   
+.userName{
+    height: 100%;
+}
+.email{
+    height: 100%;
+}
+.passwd{
+    height: 100%;
+}
+
+.label {
+    width: 100%;
+    margin-bottom: 3px;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+
+

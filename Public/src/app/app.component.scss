@@ -1,0 +1,63 @@
+.svg {
+    animation: spinPulse 3s infinite, scalePulse 2s infinite;
+    position: absolute;
+    top:-200px;
+    z-index: -1;
+    width: 70%;
+    opacity: 0.9;
+}
+
+.svg2 {
+    animation: spinPulse 3s infinite, scalePulse 2s infinite;
+    position: absolute;
+    top:-200px;
+    right:10px;
+    z-index: -1;
+    width: 60%;
+    opacity: 0.9;
+}
+.svg2 path{
+    fill: #aed816;
+}   
+.svg3 path{
+    fill: #16d8ae;
+}
+.svg3 {
+    animation: spinPulse 3s infinite, scalePulse 2s infinite;
+    position: absolute;
+    top:-200px;
+    left: 10px;
+    z-index: -1;
+    width: 80%;
+    opacity: 0.9;
+}
+
+@keyframes spinPulse {
+    0% {
+      transform: rotate(0deg); /* Kezdő állapot */
+    }
+    50% {
+      transform: rotate(180deg); /* Félig elforgatott állapot */
+    }
+    100% {
+      transform: rotate(360deg); /* Teljes elforgatás */
+    }
+  }
+
+  @keyframes scalePulse {
+    0% {
+      transform: scale(1); /* Kezdő méret */
+    }
+    25% {
+      transform: scale(1.1); /* Egy kicsit nagyobb */
+    }
+    50% {
+      transform: scale(1); /* Alapméret */
+    }
+    75% {
+      transform: scale(0.9); /* Egy kicsit kisebb */
+    }
+    100% {
+      transform: scale(1); /* Vissza alapméretre */
+    }
+  }
