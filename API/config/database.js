@@ -1,13 +1,15 @@
 const { Sequelize } = require('sequelize');
 const config = require('./config');
+
 const db = new Sequelize(
-    config.db.database,
-    config.db.user,
-    config.db.password,
+    config.appDb.database,
+    config.appDb.user,
+    config.appDb.password,
     {
-        host: config.db.host,
+        host: config.appDb.host,
         dialect: 'mysql',
-        logging: (msg) => console.log(msg)
+        logging: config.appDb.logging ? console.log : false
     }
 );
+
 module.exports = db;

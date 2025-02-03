@@ -1,15 +1,24 @@
 require('dotenv').config();
 
 module.exports = {
-    port: process.env.PORT,
-    db: {
+    port: process.env.PORT || 3000,
+    plainDb: {
         host: process.env.DBHOST,
         user: process.env.DBUSER,
         password: process.env.DBPASS,
         database: process.env.DBNAME,
-        force: process.env.FORCE === 'true' ? true : false,
-        logging: process.env.LOGGING === 'true' ? true : false,
-        alter: process.env.ALTER === 'true' ? true : false,
+        force: process.env.FORCE === 'true',
+        logging: process.env.LOGGING === 'true',
+        alter: process.env.ALTER === 'true',
     },
-    jwtSecret: process.env.JWT_SECRET
+    appDb: {
+        host: process.env.APPDBHOST,
+        user: process.env.APPDBUSER,
+        password: process.env.APPDBPASS,
+        database: process.env.APPDBNAME,
+        force: process.env.FORCE === 'true',
+        logging: process.env.LOGGING === 'true',
+        alter: process.env.ALTER === 'true',
+    },
+    jwtSecret: process.env.JWT_SECRET || 'your_jwt_secret'
 };
