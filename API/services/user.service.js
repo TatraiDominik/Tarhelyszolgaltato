@@ -31,7 +31,11 @@ exports.loginUser = async (email, password) => {
 
     const token = generateToken({ id: user.id, name: user.name, email: user.email});
 
-    return { token }; 
+    return { token,
+        user:{
+            name:user.name,
+            domain:user.domain
+        } }; 
 }
 
 exports.getAllUsers = async () => {

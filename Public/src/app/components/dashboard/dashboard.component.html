@@ -1,0 +1,21 @@
+<div class="container">
+    <h3>Üdv újra, {{userName}}</h3>
+    <div class="userActions">
+        <p-card  class="currentSub">
+            <h3>Domained: </h3>
+            <h3><a target="_blank" href="https://www.kulimakekszeresz.hu/">{{userDomain}}</a></h3>
+            <h3>Jelenlegi előfizetésed:</h3>
+            <h3>szia szexi</h3>
+        </p-card>
+        <div class="actionBtns">
+            <p-button icon="pi pi-check" severity="success" />
+            <p-button icon="pi pi-pencil" severity="contrast" />
+            <p-button icon="pi pi-info" severity="info" />
+            <p-button icon="pi pi-trash" severity="danger" />
+        </div>
+        <p-button icon="pi pi-queston" label="Előzités módosítása" routerLink="/Plans" severity="secondary" class="modifySub"/>
+    </div>
+    <img src="../../../assets/tarr.png" alt="tarr" class="balTarr">
+    <img src="../../../assets/tarr.png" alt="tarr" class="jobbTarr">
+
+</div>

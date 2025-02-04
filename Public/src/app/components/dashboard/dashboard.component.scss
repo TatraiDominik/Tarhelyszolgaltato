@@ -1,0 +1,47 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    height: 100%;
+}
+a{
+    color: #3b7bf1;
+    text-decoration: underline;
+}
+.actionBtns{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    justify-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+.userActions{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    gap:2rem;
+}
+.balTarr{
+    position: absolute;
+    left: 0;
+    width: 500px;
+
+}
+.jobbTarr{
+    position: absolute;
+    transform: scaleX(-1);
+    right: 0;
+    width: 500px;
+}
+.modifySub{
+}
+    
+
+

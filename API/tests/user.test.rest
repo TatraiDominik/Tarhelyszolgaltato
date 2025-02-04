@@ -3,11 +3,12 @@ POST http://localhost:3000/api/user/register
 Content-Type: application/json
 
 {
-    "name": "Kanádi Csevin",
-    "email": "csanikevin@gmail.com",
-    "password": "Tarrmaci01"
+    "name": "Bartek Áron",
+    "email": "bartekaron@gmail.com",
+    "password": "Anyabiztosszeret123"
     
 }
+
 ###Login
 POST http://localhost:3000/api/user/login
 Content-Type: application/json
