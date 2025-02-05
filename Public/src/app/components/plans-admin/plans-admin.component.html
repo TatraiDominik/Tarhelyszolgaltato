@@ -1,33 +1,38 @@
 <div class="container">
-    <h3>Admin felület</h3>
-    <div class="crud">
-      <div class="newPlan">
-        <h3>Töltsön fel új előfizetést, vagy szerkesszen egy meglévőt</h3>
-        <div class="inputs">
-          <label for="planName" class="label">Plan name</label>
-          <input class="input" type="text" pInputText id="planName" [(ngModel)]="planName" />
-          <label for="planPrice" class="label">Plan price</label>
-          <input class="input" type="text" pInputText id="planPrice" [(ngModel)]="planPrice" />
-          <label for="planDesc" class="label">Plan description</label>
-          <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="planDesc" class="input"></textarea>
-          <div class="crudBtns"> 
-            <p-button label="Hozzáadás" severity="success" (click)="addNewPlan()"></p-button>
-            <p-button label="Szerkesztés" severity="contrast"></p-button>
-            <p-button label="Törlés" severity="danger"></p-button>
-          </div>
-
+  <h3>Admin felület</h3>
+  <div class="crud">
+    <div class="newPlan">
+      <h3>Töltsön fel új előfizetést, vagy szerkesszen egy meglévőt</h3>
+      <div class="inputs">
+        <label for="planId" class="label">Plan Id</label>
+        <input class="input" type="text" pInputText id="planId" [(ngModel)]="planId" disabled />
+        <label for="planName" class="label">Plan name</label>
+        <input class="input" type="text" pInputText id="planName" [(ngModel)]="planName" />
+        <label for="planPrice" class="label">Plan price</label>
+        <input class="input" type="text" pInputText id="planPrice" [(ngModel)]="planPrice" />
+        <label for="planDesc" class="label">Plan description</label>
+        <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="planDesc" class="input"></textarea>
+        <div class="crudBtns">
+          <p-button label="Hozzáadás" severity="success" (click)="addNewPlan()"></p-button>
+          <p-button label="Szerkesztés" severity="info" (click)="updatePlan()"></p-button>
+          <p-button 
+            label="Törlés" 
+            severity="danger" 
+            (click)="deletePlan(planId)" 
+            [disabled]="!planId">
+          </p-button>
         </div>
-
       </div>
-      <div class="plans">
-        <div *ngFor="let plan of plans" class="plan-container" (click)="editPlan(plan)">
-          <div class="plan-card">
-            <h3>{{ plan.name }}</h3>
-            <h3>{{ plan.price }} Ft</h3>
-            <h3>{{ shortDescription(plan.description) }}</h3> 
-          </div>
+    </div>
+    <div class="plans">
+      <div *ngFor="let plan of plans" class="plan-container" (click)="editPlan(plan)">
+        <div class="plan-card">
+          <h3>{{ plan.id }}</h3>
+          <h3>{{ plan.name }}</h3>
+          <h3>{{ plan.price }} Ft</h3>
+          <h3>{{ shortDescription(plan.description) }}</h3>
         </div>
       </div>
     </div>
   </div>
-  
+</div>

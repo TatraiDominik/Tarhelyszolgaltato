@@ -46,4 +46,22 @@ export class ApiService {
   addPlan(planData: { name: string, price: number, description: string }): Observable<any> {
     return this.http.post(`${this.server}/plans/addPlan`, planData, { headers: this.getHeaders() });
   }
+
+   
+  updatePlan(planId: string, planData: { name: string, price: number, description: string }): Observable<any> {
+    return this.http.patch(`${this.server}/plans/${planId}`, planData, { headers: this.getHeaders() });
+  }
+  
+    
+  deletePlan(planId: string): Observable<any> {
+    return this.http.delete(`${this.server}/plans/${planId}`, { headers: this.getHeaders() });
+  }
+
+  deleteUser(userId: string): Observable<any> {
+    return this.http.delete(`${this.server}/user/${userId}`, { headers: this.getHeaders() });
+  }
+
+  updateUser(userId: string, userData: { name: string; email: string; password: string }): Observable<any> {
+    return this.http.patch(`${this.server}/user/${userId}`, userData, { headers: this.getHeaders() });
+  }
 }

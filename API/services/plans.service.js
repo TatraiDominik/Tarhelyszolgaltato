@@ -11,9 +11,7 @@ exports.addNewPlan = async (name, price, description) =>{
 }
 
 exports.getAllPlans = async () =>{
-    return await Plans.findAll({
-        attributes: {exclude:['id']}
-    });
+    return await Plans.findAll();
 }
 
 exports.updatePlan = async (id, updatedData) => {
