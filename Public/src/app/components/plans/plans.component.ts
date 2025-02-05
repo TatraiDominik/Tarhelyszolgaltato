@@ -1,32 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { ApiService } from '../../services/api.service';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
-import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-plans',
+    standalone: true,
+    imports: [CardModule, ButtonModule, CommonModule],
     templateUrl: './plans.component.html',
-    styleUrls: ['./plans.component.css'],
+    styleUrl: './plans.component.scss'
 })
 export class PlansComponent implements OnInit {
-    userName: string = 'Teszt Elek'; // Példa felhasználónév
-    userDomain: string = 'www.kulimakekszeresz.hu'; // Példa domain
-    currentSubscription: string = 'Alap csomag'; // Példa előfizetés
+    plans: any[] = []; // Az előfizetések listája
 
-    constructor(private http: HttpClient) {}
+    constructor(private api: ApiService) {}
 
     ngOnInit(): void {
-        // Példa: Adatok lekérése a backendről
-        this.fetchUserData();
+        this.loadPlans(); // Adatok betöltése a komponens inicializálásakor
     }
 
-    fetchUserData() {
-        // Példa: HTTP kérés a backendhez
-        this.http.get('http://localhost:3000/api/user').subscribe((response: any) => {
-            this.userName = response.name;
-            this.userDomain = response.domain;
-            this.currentSubscription = response.subscription;
+    loadPlans(): void {
+        this.api.getPlans().subscribe({
+            next: (data) => {
+                console.log('API válasz:', data); // Ellenőrizd a válasz adatokat
+                if (data.success) {
+                    this.plans = data.results; // A válaszból a results tömb
+                }
+            },
+            error: (err) => {
+                console.error('Hiba történt az adatok betöltésekor:', err);
+            }
         });
     }
 }

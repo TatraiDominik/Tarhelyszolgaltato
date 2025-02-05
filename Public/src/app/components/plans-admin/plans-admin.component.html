@@ -3,6 +3,19 @@
 <div class="crud">
     <div class="newPlan">
         <h3>Töltsön fel új előfizetést, vagy szerkesszen egy meglévőt</h3>
+        <div class="inputs">
+            <label  for="planName" class="label">Plan name</label>
+            <input class="input" type="text" pInputText id="planName" [(ngModel)]="planName" />
+            <label for="planPrice" class="label">Plan price</label>
+            <input class="input" type="text" pInputText id="planPrice" [(ngModel)]="planPrice" />
+            <label for="planDesc" class="label">Plan description</label>
+            <textarea 
+            rows="5"
+            cols="30" 
+            pInputTextarea 
+            [(ngModel)]="planDesc" class="input">
+            </textarea>
+        </div>
     </div>
     <div class="plans">
         <span>xd</span>

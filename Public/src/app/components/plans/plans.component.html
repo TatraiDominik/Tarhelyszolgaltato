@@ -1,35 +1,20 @@
-<div class="container">
-    <h3>Üdv újra, {{ userName }}</h3>
-    <div class="userActions">
-        <!-- Aktuális előfizetés card -->
-        <p-card class="currentSub">
-            <h3>Domained: </h3>
-            <h3>
-                <a target="_blank" [href]="'https://' + userDomain">{{ userDomain }}</a>
-            </h3>
-            <h3>Jelenlegi előfizetésed:</h3>
-            <h3>{{ currentSubscription }}</h3>
-        </p-card>
-
-        <!-- Művelet gombok -->
-        <div class="actionBtns">
-            <p-button icon="pi pi-check" severity="success"></p-button>
-            <p-button icon="pi pi-pencil" severity="contrast"></p-button>
-            <p-button icon="pi pi-info" severity="info"></p-button>
-            <p-button icon="pi pi-trash" severity="danger"></p-button>
+<div class="plans-container">
+    <h2>Elérhető előfizetések</h2>
+    <div class="plans-grid">
+        <!-- Ellenőrizd, hogy minden plan objektum rendelkezik name, price és description mezőkkel -->
+        <div *ngFor="let plan of plans" class="plan-card">
+            <p-card>
+                <ng-template pTemplate="header">
+                    <h3>{{ plan.name }}</h3>
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <p><strong>Ár:</strong> {{ plan.price }} Ft</p>
+                    <p><strong>Leírás:</strong> {{ plan.description }}</p>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                    <button pButton label="Kiválasztás" class="p-button-primary"></button>
+                </ng-template>
+            </p-card>
         </div>
-
-        <!-- Előfizetés módosítása gomb -->
-        <p-button
-            icon="pi pi-question"
-            label="Előfizetés módosítása"
-            routerLink="/plans"
-            severity="secondary"
-            class="modifySub"
-        ></p-button>
     </div>
-
-    <!-- Háttérképek -->
-    <img src="../../../assets/tarr.png" alt="tarr" class="balTarr" />
-    <img src="../../../assets/tarr.png" alt="tarr" class="jobbTarr" />
 </div>

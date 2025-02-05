@@ -38,4 +38,9 @@ export class ApiService {
   getProfile(): Observable<any> {
     return this.http.get(`${this.server}/user/profile`, { headers: this.getHeaders() });
   }
+
+  getPlans(): Observable<any> {
+    return this.http.get(`${this.server}/plans/getPlans`, { headers: this.getHeaders() });
+  }
+
 }
