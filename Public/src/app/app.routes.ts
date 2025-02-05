@@ -17,5 +17,5 @@ export const routes: Routes = [
     { path: 'Users', component: UsersComponent, canActivate: [AuthGuard] },
     { path: 'PlansAdmin', component: PlansAdminComponent, canActivate: [AuthGuard] },
     { path: 'Login', component: LoginComponent },
-    
+    { path: 'Registration', component: RegistrationComponent}
 ];
