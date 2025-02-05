@@ -25,3 +25,26 @@ exports.getPlan = async (req, res, next) => {
         next(error);
     }
 }
+exports.updatePlan = async (req, res, next) => {
+    const { id } = req.params;
+    const { name, price, description } = req.body;
+
+    try {
+        const updatedPlan = await plansService.updatePlan(id, { name, price, description });
+        res.status(200).json(updatedPlan);
+    } catch (error) {
+        next(error);
+    }
+};
+
+
+exports.deletePlan = async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        const result = await plansService.deletePlan(id);
+        res.status(200).json(result);
+    } catch (error) {
+        next(error);
+    }
+};

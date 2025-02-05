@@ -9,3 +9,18 @@ Content-Type: application/json
 }
 ### get plans
 GET http://localhost:3000/api/plans/getPlans
+
+### update plans
+PATCH  http://localhost:3000/api/plans/49fe205f-6f18-414e-b879-dd45a188a18a
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNzI1MjQxLTY3YzMtNDUyZS05OWNjLThmM2RjZDhiOWY0NiIsIm5hbWUiOiJLb3ZhZ28iLCJlbWFpbCI6ImtvdmFnb0BnbWFpbC5jb20iLCJpYXQiOjE3Mzg3NTE3MjYsImV4cCI6MTczODc1NTMyNn0.eoDkWm_iN_MfOjbArCrqB9qT2VlY0b3L6Kgdb3xSqTk
+
+{
+    "name": "Premium",
+    "price": 20,
+    "description": "A prémium előfizetésünk kiemelkedő teljesítménnyel és extra funkciókkal rendelkezik. Azoknak ajánljuk, akik nagyobb sávszélességre és fejlettebb funkciókra vágynak."
+}
+
+### delete
+DELETE  http://localhost:3000/api/plans/165ae47d-7940-4850-beb8-4c6b64cd1618
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNzI1MjQxLTY3YzMtNDUyZS05OWNjLThmM2RjZDhiOWY0NiIsIm5hbWUiOiJLb3ZhZ28iLCJlbWFpbCI6ImtvdmFnb0BnbWFpbC5jb20iLCJpYXQiOjE3Mzg3NTE3MjYsImV4cCI6MTczODc1NTMyNn0.eoDkWm_iN_MfOjbArCrqB9qT2VlY0b3L6Kgdb3xSqTk

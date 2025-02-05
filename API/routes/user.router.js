@@ -23,9 +23,9 @@ router.get('/:id', authMiddleware);
 router.get('/profile', authMiddleware);
 
 // update user
-router.patch('/:id', authMiddleware);
+router.patch('/:id', authMiddleware, userController.updateUser);
 
 // delete user
-router.delete(':/id', authMiddleware);
+router.delete('/:id', authMiddleware,  userController.deleteUser);
 
 module.exports = router;

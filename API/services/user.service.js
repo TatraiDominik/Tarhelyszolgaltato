@@ -43,3 +43,53 @@ exports.getAllUsers = async () => {
         attributes: {exclude: ['password']}
     });
 }
+
+
+exports.deleteUser = async (userId) => {
+    
+    const user = await User.findOne({ where: { id: userId } });
+    if (!user) throw new Error('Felhasználó nem található!');
+    
+    // Destroy the user record
+    await User.destroy({ where: { id: userId } });
+
+    return { message: 'Felhasználó törölve.' };
+};
+
+
+exports.updateUser = async (req, res, next) => {
+    const userId = req.params.id;
+    const { name, email, password } = req.body;
+
+    try {
+        const user = await User.findOne({ where: { id: userId } });
+        if (!user) {
+            return res.status(404).json({ message: 'Felhasználó nem található!' });
+        }
+
+        // Ellenőrizzük, ha új jelszót adtak meg, akkor hash-elni kell
+        if (password) {
+            const hashedPassword = await bcrypt.hash(password, 10);
+            req.body.password = hashedPassword;  // Hash-elt jelszó
+        }
+
+        // Felhasználó frissítése
+        const updatedUser = await user.update({
+            name: name || user.name,
+            email: email || user.email,
+            password: req.body.password || user.password
+        });
+
+        res.status(200).json({
+            message: 'Felhasználó sikeresen frissítve!',
+            user: {
+                id: updatedUser.id,
+                name: updatedUser.name,
+                email: updatedUser.email,
+                domain: updatedUser.domain
+            }
+        });
+    } catch (error) {
+        next(error);
+    }
+};

@@ -14,7 +14,17 @@ POST http://localhost:3000/api/user/login
 Content-Type: application/json
 
 {
-    "email": "csanikevin@gmail.com",
-    "password": "Tarrmaci01"
+    "email": "kovago@gmail.com",
+    "password": "kovago123"
     
+}
+###update
+PATCH http://localhost:3000/api/user/60725241-67c3-452e-99cc-8f3dcd8b9f46
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNzI1MjQxLTY3YzMtNDUyZS05OWNjLThmM2RjZDhiOWY0NiIsIm5hbWUiOiJLb3ZhZ28iLCJlbWFpbCI6ImtvdmFnb0BnbWFpbC5jb20iLCJpYXQiOjE3Mzg3NTIzNjEsImV4cCI6MTczODc1NTk2MX0.IZI4VeZ7o6OQ9DY0dRhC4iLHzi1bl4JeMhgExykQatU
+
+{
+  "name": "Kővágó Bezdán",
+  "email": "kovago@gmail.com",
+  "password": "kovago123"
 }
