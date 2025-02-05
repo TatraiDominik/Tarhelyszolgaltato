@@ -1,0 +1,9 @@
+###Add new plan
+POST http://localhost:3000/api/plans/addPlan
+Content-Type: application/json
+
+{
+    "name": "Free",
+    "price": 0,
+    "description": "Az ingyenes előfizetésünk tökéletes választás mindazok számára, akik szeretnék kipróbálni a szolgáltatásunkat, mielőtt elköteleződnének egy fizetős csomag mellett. Az ingyenes csomag lehetőséget biztosít arra, hogy weboldaladat elindítsd alapvető funkciókkal, és megtapasztald a megbízható és gyors tárhelyszolgáltatásunk előnyeit"
+}

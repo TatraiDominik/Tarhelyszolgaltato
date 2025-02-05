@@ -4,13 +4,15 @@ const cors = require('cors');
 const config = require('./config/config');
 const databaseRouter = require('./routes/database.router'); 
 const userRouter = require('./routes/user.router');
+const plansRouter = require('./routes/plans.router');
 const db = require('./config/database');
 
 app.use(cors());
-app.use(express.json()); // Ez a sor biztosítja, hogy a JSON törzs feldolgozásra kerüljön
+app.use(express.json()); 
 app.use(express.urlencoded({ extended: true })); 
 app.use('/api/database', databaseRouter);
 app.use('/api/user', userRouter);  
+app.use('/api/plans', plansRouter);
 
 db.authenticate()
   .then(() => {

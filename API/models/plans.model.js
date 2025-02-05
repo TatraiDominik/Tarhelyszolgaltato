@@ -13,7 +13,7 @@ const Plans = db.define('Plans', {
         allowNull: false
     },
     price: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
         unique: false
     },
