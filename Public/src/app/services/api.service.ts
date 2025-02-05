@@ -43,4 +43,7 @@ export class ApiService {
     return this.http.get(`${this.server}/plans/getPlans`, { headers: this.getHeaders() });
   }
 
+  addPlan(planData: { name: string, price: number, description: string }): Observable<any> {
+    return this.http.post(`${this.server}/plans/addPlan`, planData, { headers: this.getHeaders() });
+  }
 }

@@ -17,15 +17,15 @@ export class PlansComponent implements OnInit {
     constructor(private api: ApiService) {}
 
     ngOnInit(): void {
-        this.loadPlans(); // Adatok betöltése a komponens inicializálásakor
+        this.loadPlans(); 
     }
 
     loadPlans(): void {
         this.api.getPlans().subscribe({
             next: (data) => {
-                console.log('API válasz:', data); // Ellenőrizd a válasz adatokat
+                console.log('API válasz:', data); 
                 if (data.success) {
-                    this.plans = data.results; // A válaszból a results tömb
+                    this.plans = data.results; 
                 }
             },
             error: (err) => {
