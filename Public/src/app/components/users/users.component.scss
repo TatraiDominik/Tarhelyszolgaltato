@@ -1,0 +1,11 @@
+.user-card {
+    width: 100%;
+    max-width: 300px;
+    margin: auto;
+}
+ 
+.users-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); // Két oszlop
+    gap: 16px; // Gap a kártyák között
+  }

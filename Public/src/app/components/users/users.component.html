@@ -1,1 +1,16 @@
-<p>users works!</p>
+<div class="users-container">
+    <h2>Felhasználók kezelése</h2>
+    <div class="users-grid">
+        <div *ngFor="let user of users">
+            <p-card>
+                <ng-template pTemplate="content">
+                    <h3>{{ user.name}}</h3>
+                    <h3>{{ user.email}}</h3>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                    <button pButton label="Kitiltás" class="p-button-primary"  (click)="deleteUser(user.id)"></button>
+                </ng-template>
+            </p-card>
+        </div>
+    </div>
+</div>
