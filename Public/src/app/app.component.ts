@@ -48,7 +48,7 @@ export class AppComponent implements OnInit, OnDestroy {
       isLoggedIn ? { label: 'Logout', icon: 'pi pi-sign-out', command: () => this.logout() } : null
     ].filter(item => item !== null) as MenuItem[];
     
-    console.log("Menü frissítve:", this.items); 
+    
   }
 
   logout() {
