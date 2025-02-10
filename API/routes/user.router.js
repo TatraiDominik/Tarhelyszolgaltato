@@ -24,4 +24,9 @@ router.patch('/:id', authMiddleware, userController.updateUser);
 // Felhasználó törlése
 router.delete('/:id', authMiddleware, userController.deleteUser);
 
+// Előfizetés hozzáadása
+router.post('/add-plan', authMiddleware, userController.addPlanToUser);
+
+// Felhasználó előfizetéseinek lekérése
+router.get('/plans', authMiddleware, userController.getUserPlans);
 module.exports = router;

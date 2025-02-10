@@ -64,4 +64,15 @@ export class ApiService {
   updateUser(userId: string, userData: { name: string; email: string; password: string }): Observable<any> {
     return this.http.patch(`${this.server}/user/${userId}`, userData, { headers: this.getHeaders() });
   }
+
+  
+  getUserPlans(userId: string): Observable<any> {
+      return this.http.get(`${this.server}/user/plans`, { headers: this.getHeaders() });
+  }
+  
+  
+  addPlanToUser(userId: string, planId: string): Observable<any> {
+    const planData = { userId, planId };
+    return this.http.post(`${this.server}/user/add-plan`, planData, { headers: this.getHeaders() });
+  }
 }

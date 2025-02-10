@@ -1,20 +1,29 @@
-<div class="plans-container">
+<div class="container">
     <h2>Elérhető előfizetések</h2>
-    <div class="plans-grid">
-        <!-- Ellenőrizd, hogy minden plan objektum rendelkezik name, price és description mezőkkel -->
-        <div *ngFor="let plan of plans" class="plan-card">
-            <p-card>
+    <div class="cardCon">
+        <div *ngFor="let plan of plans">
+            <p-card class="planCard">
                 <ng-template pTemplate="header">
                     <h3>{{ plan.name }}</h3>
                 </ng-template>
                 <ng-template pTemplate="content">
                     <p><strong>Ár:</strong> {{ plan.price }} Ft</p>
-                    <p><strong>Leírás:</strong> {{ plan.description }}</p>
+                    <div class="description-container">
+                        <p><strong>Leírás:</strong> {{ plan.description }}</p>
+                    </div>
                 </ng-template>
                 <ng-template pTemplate="footer">
-                    <button pButton label="Kiválasztás" class="p-button-primary"></button>
+                    <!-- A kiválasztott terv ID-ját beállítja, ha a felhasználó ezt választja -->
+                    <button pButton label="Kiválasztás" class="p-button-primary" 
+                            (click)="selectedPlanId = plan.id" [disabled]="selectedPlanId === plan.id">
+                    </button>
                 </ng-template>
             </p-card>
         </div>
     </div>
+
+    <!-- A felhasználó által kiválasztott terv hozzáadása -->
+    <button pButton label="Előfizetés hozzáadása" class="p-button-success" (click)="addPlan()" 
+            [disabled]="!selectedPlanId">
+    </button>
 </div>

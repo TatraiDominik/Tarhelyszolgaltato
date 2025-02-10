@@ -28,3 +28,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNzI1MjQxL
   "email": "kovago@gmail.com",
   "password": "kovago123"
 }
+
+### Post new sub
+### Add plan to user
+POST http://localhost:3000/api/user/add-plan
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNzI1MjQxLTY3YzMtNDUyZS05OWNjLThmM2RjZDhiOWY0NiIsIm5hbWUiOiJLxZF2w6Fnw7MgQmV6ZMOhbiIsImVtYWlsIjoia292YWdvQGdtYWlsLmNvbSIsImlhdCI6MTczOTE4NjYxNywiZXhwIjoxNzM5MTkwMjE3fQ.iGkUnRgResNOdbEJwsqZIvA4MbK1rypb_V0y3aYGH-Y
+Content-Type: application/json
+
+{
+  "userId": "60725241-67c3-452e-99cc-8f3dcd8b9f46", 
+  "planId": "43e2b6f0-5acd-474e-b124-72af35e03561"
+}

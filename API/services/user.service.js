@@ -1,6 +1,8 @@
 const { User } = require('../models/user.model');
 const bcrypt = require('bcrypt');
 const { generateToken } = require('../utils/token');
+const { Plans } = require('../models/plans.model');  // Make sure the Plans model is imported
+const { Subscription } = require('../models/subscription.model');
 
 // Regisztráció
 exports.registerUser = async (name, email, password) => {
@@ -69,3 +71,35 @@ exports.updateUser = async (userId, { name, email, password }) => {
 
     return updatedUser;
 };
+
+// Előfizetés hozzáadása a felhasználóhoz
+exports.addPlanToUser = async (userId, planId) => {
+    // Ellenőrizzük, hogy a felhasználó létezik-e
+    const user = await User.findByPk(userId);
+    if (!user) throw new Error('Felhasználó nem található!');
+
+    // Ellenőrizzük, hogy a plan létezik-e
+    const plan = await Plans.findByPk(planId);  // Itt most a Plans modellt használjuk
+    if (!plan) throw new Error('Előfizetés nem található!');
+
+    // A Subscription rekord létrehozása
+    await Subscription.create({
+        userId,
+        planId
+    });
+
+    return 'Előfizetés sikeresen hozzáadva a felhasználóhoz!';
+};;
+
+// Felhasználó előfizetéseinek lekérése
+exports.getUserPlans = async (userId) => {
+    const user = await User.findByPk(userId);
+    if (!user) throw new Error('Felhasználó nem található!');
+
+    // Lekérjük a felhasználó összes előfizetését
+    const plans = await user.getPlans();  // Használjuk az automatikus generált metódust (ha az associations.js-ben létre lett hozva)
+    
+    return plans;
+};
+
+

@@ -14,8 +14,7 @@ const Plans = db.define('Plans', {
     },
     price: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-        unique: false
+        allowNull: false
     },
     description: {
         type: DataTypes.TEXT,

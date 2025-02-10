@@ -1,8 +1,8 @@
-const userService = require('../services/user.service');
+const userService = require('../services/user.service'); // A userService-t kell importálni
 const { User } = require('../models/user.model');
 const bcrypt = require('bcrypt'); // Jelszó hash-eléséhez
 
-// User regisztráció
+// Felhasználó regisztráció
 exports.register = async (req, res, next) => {
     console.log('Request Body:', req.body);
     try {
@@ -100,10 +100,34 @@ exports.deleteUser = async (req, res, next) => {
         next(error);
     }
 };
+
+// Minden felhasználó lekérése
 exports.getAllUsers = async (req, res, next) => {
     try {
         const users = await userService.getAllUsers();
         res.status(200).json(users);
+    } catch (error) {
+        next(error);
+    }
+};
+
+// Terv hozzáadása a felhasználóhoz
+exports.addPlanToUser = async (req, res, next) => {
+    try {
+        const { userId, planId } = req.body;
+        const message = await userService.addPlanToUser(userId, planId); 
+        res.status(200).json({ message });
+    } catch (error) {
+        next(error);
+    }
+};
+
+// Felhasználó előfizetéseinek lekérése
+exports.getUserPlans = async (req, res, next) => {
+    try {
+        const userId = req.user.id;
+        const plans = await userService.getUserPlans(userId); // Helyes változónév
+        res.status(200).json(plans);
     } catch (error) {
         next(error);
     }
