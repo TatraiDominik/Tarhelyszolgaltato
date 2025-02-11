@@ -21,19 +21,20 @@ export class UsersComponent implements OnInit {
   }
 
   loadUsers(): void {
+    console.log('Felhasználók betöltése...');
     this.api.getUsers().subscribe({
       next: (data) => {
         console.log('API válasz:', data);
-        if (data.success) {
-          this.users = data.results;
-        }
+        // Ha az adatok közvetlenül jönnek, akkor nem kell a success ellenőrzése
+        this.users = data;  // Az adatokat közvetlenül hozzárendeljük
+        console.log('Felhasználók:', this.users);
       },
       error: (err) => {
         console.error('Hiba történt az adatok betöltésekor:', err);
       }
     });
   }
-
+  
   // deleteUser metódus hozzáadása
   deleteUser(userId: string): void {
     this.api.deleteUser(userId).subscribe({

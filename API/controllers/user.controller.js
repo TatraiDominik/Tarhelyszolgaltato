@@ -126,7 +126,7 @@ exports.addPlanToUser = async (req, res, next) => {
 exports.getUserPlans = async (req, res, next) => {
     try {
         const userId = req.user.id;
-        const plans = await userService.getUserPlans(userId); // Helyes változónév
+        const plans = await userService.getUserPlans(userId); // A módosított metódus hívása
         res.status(200).json(plans);
     } catch (error) {
         next(error);

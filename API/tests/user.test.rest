@@ -39,3 +39,11 @@ Content-Type: application/json
   "userId": "60725241-67c3-452e-99cc-8f3dcd8b9f46", 
   "planId": "43e2b6f0-5acd-474e-b124-72af35e03561"
 }
+
+### Get plans
+GET http://localhost:3000/api/user/plans
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNzI1MjQxLTY3YzMtNDUyZS05OWNjLThmM2RjZDhiOWY0NiIsIm5hbWUiOiJLxZF2w6Fnw7MgQmV6ZMOhbiIsImVtYWlsIjoia292YWdvQGdtYWlsLmNvbSIsImlhdCI6MTczOTI2MDY4OCwiZXhwIjoxNzM5MjY0Mjg4fQ.ENxCxt04VQSXF27OU1rCWB5eiC-77r99ySmEzac1Q80
+
+###
+GET http://localhost:3000/api/user/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNzI1MjQxLTY3YzMtNDUyZS05OWNjLThmM2RjZDhiOWY0NiIsIm5hbWUiOiJLxZF2w6Fnw7MgQmV6ZMOhbiIsImVtYWlsIjoia292YWdvQGdtYWlsLmNvbSIsImlhdCI6MTczOTI2MjE3NiwiZXhwIjoxNzM5MjY1Nzc2fQ.FaQhWNjREiAZ4O23ZNcSF5RlFzTOmeHwXbttQ6Vqayk

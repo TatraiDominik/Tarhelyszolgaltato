@@ -75,4 +75,16 @@ export class ApiService {
     const planData = { userId, planId };
     return this.http.post(`${this.server}/user/add-plan`, planData, { headers: this.getHeaders() });
   }
+
+  createDatabase(data: { dbname: string }): Observable<any> {
+    return this.http.post(`${this.server}/database/create-database`, data, { headers: this.getHeaders() });
+  }
+
+  createUser(data: { username: string }): Observable<any> {
+      return this.http.post(`${this.server}/database/create-user`, data, { headers: this.getHeaders() });
+  }
+
+  grantPrivileges(data: { username: string, dbname: string, privileges: string }): Observable<any> {
+      return this.http.post(`${this.server}/database/grant-privileges`, data, { headers: this.getHeaders() });
+  }
 }

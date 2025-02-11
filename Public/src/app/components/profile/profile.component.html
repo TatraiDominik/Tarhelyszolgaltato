@@ -1,1 +1,16 @@
-<p>profile works!</p>
+<div class="profile-container">
+    <h2>Üdvözlünk, {{ userName }}!</h2>
+  
+    <h3>Előfizetéseid:</h3>
+    <ul *ngIf="userPlans.length > 0; else noPlans">
+      <li *ngFor="let plan of userPlans">
+        <strong>{{ plan.name }}</strong> - {{ plan.price }} Ft/hó
+        <p>{{ plan.description }}</p>
+      </li>
+    </ul>
+  
+    <ng-template #noPlans>
+      <p>Nincs aktív előfizetésed.</p>
+    </ng-template>
+  </div>
+  

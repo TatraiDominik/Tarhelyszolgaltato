@@ -1,0 +1,3 @@
+### Get a user's subscriptions
+GET http://localhost:3000/api/subscriptions/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNzI1MjQxLTY3YzMtNDUyZS05OWNjLThmM2RjZDhiOWY0NiIsIm5hbWUiOiJLxZF2w6Fnw7MgQmV6ZMOhbiIsImVtYWlsIjoia292YWdvQGdtYWlsLmNvbSIsImlhdCI6MTczOTI2MTMzNiwiZXhwIjoxNzM5MjY0OTM2fQ.0M6ncn_YPHeF8TKo5Nb7qnq4di7CIyLgjjcZV6oRz5E

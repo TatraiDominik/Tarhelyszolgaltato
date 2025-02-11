@@ -35,10 +35,13 @@ exports.deleteSubscription = async (subscriptionId) => {
 exports.getUserSubscriptions = async (userId) => {
     const user = await User.findByPk(userId);
     if (!user) throw new Error('Felhasználó nem található!');
-    
+
     const subscriptions = await Subscription.findAll({
         where: { userId },
-        include: [{ model: Plans }]  // A kapcsolódó plan adatokat is lekérjük
+        include: [{
+            model: Plans,
+            required: true  // Csak azok az előfizetések kerülnek visszaadásra, amelyekhez kapcsolódik 'Plan'
+        }]
     });
 
     return subscriptions;

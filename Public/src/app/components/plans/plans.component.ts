@@ -54,7 +54,7 @@ export class PlansComponent implements OnInit {
         console.log("userId: ", userId);
         if (!userId) {
             alert('Nincs bejelentkezett felhasználó. Kérlek, jelentkezz be!');
-            this.router.navigate(['/login']);  // Átirányítás a bejelentkezési oldalra
+            this.router.navigate(['/login']);
             return;
         }
     
@@ -63,10 +63,22 @@ export class PlansComponent implements OnInit {
             return;
         }
     
+        // Első lépésként hozzáadjuk az előfizetést a felhasználóhoz
         this.api.addPlanToUser(userId, this.selectedPlanId).subscribe({
             next: (response) => {
+                console.log('Előfizetés sikeresen hozzáadva!', response);
                 alert('Előfizetés sikeresen hozzáadva!');
-                // További műveletek, például átirányítás vagy frissítés
+    
+                // Kinyerjük a domain nevet a localStorage-ból
+                const domainName = localStorage.getItem('userdomain');  // Ezt a domain nevet használjuk az adatbázis névhez
+    
+                if (!domainName) {
+                    alert('Nem található domain név!');
+                    return;
+                }
+    
+                // Most a domain név alapján hozunk létre egy adatbázist
+                this.createDatabaseForUser(domainName);
             },
             error: (err) => {
                 console.error('Hiba történt az előfizetés hozzáadásakor:', err);
@@ -74,4 +86,50 @@ export class PlansComponent implements OnInit {
             }
         });
     }
+    
+    createDatabaseForUser(domainName: string): void {
+        // API hívás az adatbázis létrehozásához, most domain nevet használunk
+        this.api.createDatabase({ dbname: domainName }).subscribe({
+            next: (response) => {
+                console.log('Database created:', response);
+                this.createUserForDatabase(domainName);
+            },
+            error: (err) => {
+                console.error('Hiba történt az adatbázis létrehozásakor:', err);
+                alert('Hiba történt az adatbázis létrehozásakor.');
+            }
+        });
+    }
+    
+    createUserForDatabase(domainName: string): void {
+        // API hívás a felhasználó létrehozásához az adatbázishoz, most a domain nevet használjuk
+        const username = `user_${domainName}`;
+        this.api.createUser({ username }).subscribe({
+            next: (response) => {
+                console.log('User created for database:', response);
+                this.grantPrivilegesToUser(username, domainName);
+            },
+            error: (err) => {
+                console.error('Hiba történt a felhasználó létrehozásakor:', err);
+                alert('Hiba történt a felhasználó létrehozásakor.');
+            }
+        });
+    }
+    
+    grantPrivilegesToUser(username: string, domainName: string): void {
+        // API hívás a jogosultságok hozzárendeléséhez a felhasználóhoz és adatbázishoz
+        const privileges = 'SELECT, INSERT, UPDATE, DELETE';
+        this.api.grantPrivileges({ username, dbname: domainName, privileges }).subscribe({
+            next: (response) => {
+                console.log('Privileges granted:', response);
+                alert('Jogosultságok sikeresen hozzárendelve!');
+            },
+            error: (err) => {
+                console.error('Hiba történt a jogosultságok hozzárendelésekor:', err);
+                alert('Hiba történt a jogosultságok hozzárendelésekor.');
+            }
+        });
+    }
+    
+    
 }

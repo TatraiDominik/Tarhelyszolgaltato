@@ -93,13 +93,16 @@ exports.addPlanToUser = async (userId, planId) => {
 
 // Felhasználó előfizetéseinek lekérése
 exports.getUserPlans = async (userId) => {
-    const user = await User.findByPk(userId);
+    const user = await User.findByPk(userId, {
+        include: {
+            model: Plans,
+            through: { attributes: [] } // Nem akarjuk az intermediate táblát visszakapni
+        }
+    });
+
     if (!user) throw new Error('Felhasználó nem található!');
 
-    // Lekérjük a felhasználó összes előfizetését
-    const plans = await user.getPlans();  // Használjuk az automatikus generált metódust (ha az associations.js-ben létre lett hozva)
-    
-    return plans;
+    return user.Plans; // Az asszociáción keresztül elérhető előfizetések listája
 };
 
 
