@@ -19,7 +19,7 @@ export class ApiService {
   }
 
   // Bejelentkezés
-  login(userData: { email: string; password: string }): Observable<any> {
+  login(userData: {email: string; password: string }): Observable<any> {
     return this.http.post(`${this.server}/user/login`, userData);
   }
 

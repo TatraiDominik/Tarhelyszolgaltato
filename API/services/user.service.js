@@ -27,7 +27,7 @@ exports.loginUser = async (email, password) => {
     if (!await bcrypt.compare(password, user.password)) throw new Error('Hibás jelszó!');
 
     const token = generateToken({ id: user.id, name: user.name, email: user.email });
-    return { token, user: { name: user.name, domain: user.domain } };
+    return { token, user: {userID:user.id, name: user.name, domain: user.domain } };
 };
 
 // Felhasználó adatok lekérése (profil)

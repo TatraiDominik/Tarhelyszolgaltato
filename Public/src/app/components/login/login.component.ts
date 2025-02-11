@@ -30,25 +30,24 @@ export class LoginComponent {
       console.error("Minden mezőt ki kell tölteni!");
       return;
     }
-
+  
     const userData = { email: this.emailValue, password: this.passValue };
-
-    this.api.login(userData).subscribe({
+  
+    this.authService.login(userData).subscribe({
       next: (res) => {
-        console.log(" Sikeres bejelentkezés:", res);
+        console.log("Sikeres bejelentkezés:", res);
         alert("Sikeres bejelentkezés!");
-
-        this.authService.setToken(res.token);
-        this.authService.setUserData(res.user.name, res.user.domain);
-
+  
+        // Az AuthService automatikusan kezeli a token és user adatok mentését
         setTimeout(() => {
           this.router.navigate(['/Dashboard']);
-        }, 100); 
+        }, 100);
       },
       error: (err) => {
-        console.error(" Hiba a bejelentkezésnél:", err);
+        console.error("Hiba a bejelentkezésnél:", err);
         alert("Hiba a bejelentkezésnél!");
       }
     });
   }
+  
 }
